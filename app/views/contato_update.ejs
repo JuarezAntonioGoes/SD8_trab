@@ -1,0 +1,90 @@
+<% include ("layout/cabecalho") %>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif, Arial, Helvetica;
+        box-sizing: border-box;
+    }
+
+    main {
+        padding: 0 2rem;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fdfbfb;
+    }
+
+    main section h1 {
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 2rem;
+
+    }
+
+
+    main input[type="submit"] {
+        width: 100px;
+        text-align: center;
+        margin-top: 2rem;
+        text-decoration: none;
+        color: #fff;
+        padding: .5rem 0;
+        background-color: #43a047;
+        border-radius: 4px;
+        transition: .2s;
+        cursor: pointer;
+        border: none;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    main input[type="submit"]:hover {
+        background-color: #4db652;
+    }
+
+    main section {
+        background-color: rgba(0, 0, 0, .75);
+        color: #fff;
+        padding: 2.5rem 1.5rem;
+        border-radius: 4px;
+        width: 35%;
+        min-width: 300px;
+    }
+
+    main section form input[type="text"],
+    main section form input[type="number"] {
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        border: none;
+        height: 35px;
+        padding: .2rem .5rem;
+        font-size: 1.2rem;
+    }
+
+    main section form p {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.5rem;
+        font-weight: 600;
+        font-style: italic;
+    }
+</style>
+<main>
+    <section>
+        <h1>Atualizar Contato</h1>
+        <form action="/contatos/atualiza" method="POST">
+            <input type="hidden" name="id" value="<%= contacts == null ? "" : id %>">
+            <p>Nome: <input type="text" name="nome" value="<%= contacts == null ? "" : contacts[id].nome %>"></p>
+            <p>Email: <input type="text" name="email" value="<%= contacts == null ? "" : contacts[id].email %>"></p>
+            <p>Idade: <input type="number" name="idade" value="<%= contacts == null ? "" : contacts[id].idade %>"></p>
+            <p>Profissão: <input type="text" name="profissao"
+                    value="<%= contacts == null ? "" : contacts[id].profissao %>"></p>
+            <input type="submit" value="OK">
+        </form>
+    </section>
+</main>
+<% include ("layout/rodape") %>

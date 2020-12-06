@@ -1,0 +1,126 @@
+<% include ("layout/cabecalho") %>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: sans-serif, Arial, Helvetica;
+		box-sizing: border-box;
+	}
+
+	main {
+		padding: 0 2rem;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: #fdfbfb;
+	}
+
+	main h1 {
+		font-weight: 600;
+		color: #333;
+		margin-bottom: 2rem;
+
+	}
+
+	main table {
+		width: 90%;
+		min-width: 600px;
+	}
+
+	main table tr td {
+		text-align: center;
+		text-decoration: none;
+		color: #333;
+	}
+
+	main table tr td a {
+		text-decoration: none;
+		color: #333;
+	}
+
+
+	main>a {
+		width: 130px;
+		text-align: center;
+		margin-top: 2rem;
+		text-decoration: none;
+		color: #fff;
+		padding: 1rem;
+		background-color: rgb(63, 61, 61);
+		border-radius: 4px;
+		transition: .2s;
+	}
+
+	main>a:hover {
+		background-color: rgb(71, 70, 70);
+	}
+
+	main table thead tr:nth-child(1) {
+		background-color: #333;
+		color: #fff;
+	}
+
+	main table thead tr th {
+		padding: 1rem .5rem;
+	}
+
+	main table tbody tr:nth-child(2n) {
+		background-color: rgb(248, 244, 244);
+		color: #fff;
+	}
+
+	main table tbody tr td {
+		padding: .8rem .8rem;
+	}
+
+	main table tbody tr td a {
+		padding: .5rem .8rem;
+		color: #fff;
+		border-radius: 4px;
+		font-weight: 600;
+	}
+
+	main table tbody tr td a[data-edit] {
+		background-color: #f57f17;
+
+	}
+
+	main table tbody tr td a[data-delete] {
+		background-color: #e53935;
+
+	}
+
+	main table tr th {
+		padding: .5rem .8rem;
+	}
+</style>
+<main>
+	<h1><%= cabecalho %></h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Idade</th>
+				<th>Profissão</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% for (var i=0; i < contacts.length; i++) { %>
+			<tr>
+				<td><%= contacts[i].nome %></td>
+				<td><%= contacts[i].email %></td>
+				<td><%= contacts[i].idade%></td>
+				<td><%= contacts[i].profissao %></td>
+				<td><a href="/contatos/atualiza/<%= i %>" data-edit="">Atualizar</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+						href="/contatos/deleta/<%= i %>" data-delete="">Deletar</a></td>
+			</tr>
+			<% }; %>
+		</tbody>
+	</table>
+	<a href="/contatos/novo">Novo contato</a>
+</main>
+<% include ("layout/rodape") %>
